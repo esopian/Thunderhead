@@ -39,6 +39,22 @@ Below is an example call logging all empty Rackspace Cloud Files containers
         });
     });
 
+You can also pipe the results through a stream if desired.  The below code streams a file from a container to the filesystem.
+
+    var thunderhead = new require('thunderhead')({
+        username : 'RackspaceUsername',
+        apikey   : 'RackspaceKey',
+        region   : 'ORD'
+    });
+    var writeStream = fs.createWriteStream('DestinationPath');
+    writeStream.on('end',   function()    { console.log('Done'); });
+    writeStream.on('error', function(err) { console.log("file stream error", err); });
+
+    thunderhead.storage.getObject({
+        container : 'containerName',
+        object    : 'objectName'
+    }).pipe(writeStream);
+
 
 ## Documentation and Examples
 
