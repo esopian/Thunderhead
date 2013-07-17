@@ -24,7 +24,7 @@ Methods are called using Node.js' function(options, callback) convention.  If th
 
 Below is an example call logging all empty Rackspace Cloud Files containers
 
-    var thunderhead = new require('thunderhead')({
+    var thunderhead = new (require('thunderhead'))({
         username : 'RackspaceUsername',
         apikey   : 'RackspaceKey',
         region   : 'ORD'
@@ -41,11 +41,13 @@ Below is an example call logging all empty Rackspace Cloud Files containers
 
 You can also pipe the results through a stream if desired.  The below code streams a file from a container to the filesystem.
 
-    var thunderhead = new require('thunderhead')({
+    var fs          = require('fs')
+    var thunderhead = new (require('thunderhead'))({
         username : 'RackspaceUsername',
         apikey   : 'RackspaceKey',
         region   : 'ORD'
     });
+    
     var writeStream = fs.createWriteStream('DestinationPath');
     writeStream.on('end',   function()    { console.log('Done'); });
     writeStream.on('error', function(err) { console.log("file stream error", err); });
@@ -81,11 +83,11 @@ Tests are run using [Mocha](http://visionmedia.github.io/mocha/) and [should](ht
 
 ## Todo
 
+* complete method documentation coverage
 * complete API coverage
 * complete test coverage
-* complete method documentation coverage
 
 
-Copyright © 2013 [Cogsy](http://www.cogsy.com) licensed under the [MIT License](http://www.cogsy.com/mit_license)
+Copyright © 2013 [Cogsy](http://www.cogsy.com) licensed under the [MIT License](http://cogsy.mit-license.org/)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/cogsy/Thunderhead/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
