@@ -1,16 +1,6 @@
 # [Thunderhead](http://www.thunderheadjs.com)
 
-Highly usable [Node.js](nodejs.org) SDK for accessing the [Rackspace Open Cloud](http://www.rackspace.com/cloud/) API
-
-
-## About
-
-hmmm
-
-
-## Getting Started
-
-hmmm
+[Node.js](nodejs.org) SDK for accessing the [Rackspace Open Cloud](http://www.rackspace.com/cloud/) API
 
 
 ## Installation
