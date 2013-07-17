@@ -11,7 +11,7 @@ var client = new thunderhead({
 	region : 'ORD'
 });
 
-var port = 8080;
+var port = config.port || 8080;
 
 //   _____  ___ __  _ __ ___  ___ ___
 //  / _ \ \/ / '_ \| '__/ _ \/ __/ __|

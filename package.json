@@ -1,12 +1,18 @@
 {
   "name": "thunderhead",
   "version": "0.0.1",
-  "description": "High Coverage Cloud Services SDK for Node.js",
+  "description": "Highly usable Node.js SDK for accessing the Rackspace Open Cloud API",
+  "keywords": [
+  ],
+  "homepage": "http://www.thunderheadjs.com/"
   "main": "thunderhead.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cogsy/Thunderhead.git"
+  },
   "author": "Cogsy",
   "license": "MIT",
   "dependencies": {
