@@ -10,7 +10,7 @@
 
 ## Usage
 
-Methods are called using Node.js' function(options, callback) convention.  If ther is only one required argument you can pass it instead of the options object.
+Methods are called using Node.js' function(options, callback) convention.  If there is only one required argument you can pass it instead of the options object.
 
 Below is an example call logging all empty Rackspace Cloud Files containers
 
@@ -20,7 +20,7 @@ Below is an example call logging all empty Rackspace Cloud Files containers
         region   : 'ORD'
     });
 
-    thunderhead.storage.listContainers(null, function(err, reply){
+    thunderhead.storage.listContainers({}, function(err, reply){
         if(err) return console.log(err);
 
         reply.forEach(function(container){
@@ -65,7 +65,7 @@ The demo server will now be running at <http://localhost:8080>
 Tests are run using [Mocha](http://visionmedia.github.io/mocha/) and [should](https://github.com/visionmedia/should.js/).
 
     npm install -g mocha
-    npm install -g should
+    nom install -g should
     cp test/apiConfig.example.js test/apiConfig.js
     # update test/apiConfig.js with your Rackspace api values
     mocha

@@ -16,7 +16,7 @@ define(function(){
         } },
         "st_editContainerMeta" : { service: "storage", command: 'editContainerMeta', example: 'st_editContainerMeta.js', request: {
             container : '<container_name>',
-            meta      : '<meta_data>'
+            meta      : {}
         } },
         "st_getContainerMeta" : { service: "storage", command: 'getContainerMeta', example: 'st_getContainerMeta.js', request: {
             container : '<container_name>'
@@ -167,10 +167,10 @@ define(function(){
         "lb_listLB" : { service: 'lb', command: 'listLB', example: 'lb_listLB.js', request: {
         } },
         "lb_getSSLDetails" : { service: 'lb', command: 'getSSLDetails', example: 'lb_getSSLDetails.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
         "lb_listLBDetails" : { service: 'lb', command: 'listLBDetails', example: 'lb_listLBDetails.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
         "lb_createLB" : { service: 'lb', command: 'createLB', example: 'lb_createLB.js', request: {
             'name'       : 'a-new-loadbalancer',
@@ -189,29 +189,29 @@ define(function(){
             ]
         } },
         "lb_editLB" : { service: 'lb', command: 'editLB', example: 'lb_editLB.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
         "lb_deleteLB" : { service: 'lb', command: 'deleteLB', example: 'lb_deleteLB.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
         "lb_addNode" : { service: 'lb', command: 'addNode', example: 'lb_addNode.js', request: {
-            loadBalancerId : "<load_balancer_id",
+            loadBalancerId : "<load_balancer_id>",
             address        : '',
             condition      : '',
             port           : ''
         } },
         "lb_getHealthMonitorLB" : { service: 'lb', command: 'getHealthMonitorLB', example: 'lb_getHealthMonitorLB.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
         "lb_editHealthMonitorLB" : { service: 'lb', command: 'editHealthMonitorLB', example: 'lb_editHealthMonitorLB.js', request: {
-            loadBalancerId             : "<load_balancer_id",
+            loadBalancerId             : "<load_balancer_id>",
             attemptsBeforeDeactivation : 3,
             delay                      : 500,
             timeout                    : 1000,
             type                       : ''
         } },
         "lb_deleteHealthMonitorLB" : { service: 'lb', command: 'deleteHealthMonitorLB', example: 'lb_deleteHealthMonitorLB.js', request: {
-            loadBalancerId : "<load_balancer_id"
+            loadBalancerId : "<load_balancer_id>"
         } },
 
 

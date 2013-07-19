@@ -6,8 +6,8 @@ lb.prototype.constructor = lb;
 lb.prototype.serviceType = "rax:load-balancer";
 lb.prototype.endpoint = null;
 
-//  _____                 _   _                 
-// |  ___|   _ _ __   ___| |_(_) ___  _ __  ___ 
+//  _____                 _   _
+// |  ___|   _ _ __   ___| |_(_) ___  _ __  ___
 // | |_ | | | | '_ \ / __| __| |/ _ \| '_ \/ __|
 // |  _|| |_| | | | | (__| |_| | (_) | | | \__ \
 // |_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
@@ -17,7 +17,7 @@ lb.prototype.listLimits = function(options, callback) {
 	}, arguments)) { return callback({error:"Bad Arguments"}); }
 
 	return this.request({
-		url: "loadbalancers/limits"
+		url: "limits"
 	}, callback);
 };
 
@@ -92,7 +92,7 @@ lb.prototype.createLB = function(options, callback) {
 	if(options.port) reqObj.port = options.port;
 	if(options.timeout) reqObj.timeout = options.timeout;
 	if(options.sessionPersistence) reqObj.sessionPersistence = options.sessionPersistence;
-	
+
 
 	return this.request({
 		method : "POST",

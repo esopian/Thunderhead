@@ -115,7 +115,7 @@ core.prototype.request = function(options, callback, service) {
 			if ((!options.skipAuth) && (!options.attemptedAuth) && response.statusCode == 401) {
 				dataBuffer            = new Buffer(0);
 				options.attemptedAuth = true;
-				
+
 				self.identity.authenticate(null, function(err, reply) {
 					if(!err) {
                         returnStream.eraseTape();
@@ -157,6 +157,7 @@ core.prototype.request = function(options, callback, service) {
 };
 
 core.prototype.requestAsync = function(options, callback, service) {
+	var self = this;
 	callback = callback || function(){}; // Prevent empty callback errors - allows stream only interfaces
     var returnStream = new PlaybackStream(/*{debug:true}*/);
     var play_callback = function(err, reply, response) {
@@ -252,8 +253,8 @@ core.prototype.processArgs = function(vOpts, args) {
 	}
 
     //Check for a valid callback
-    if(typeof args[1] == 'undefined') { 
-        args[1] = function(){}; 
+    if(typeof args[1] == 'undefined') {
+        args[1] = function(){};
     } //Assume call is expecting a stream
 
 	//Check for all required options
@@ -290,7 +291,7 @@ core.prototype.processHTTPError = function(statusCode) {
 
 core.prototype.getMime = function(filename) {
 
-    //Put mime type definitions here.  If set in this list it will be submitted in the headers.  
+    //Put mime type definitions here.  If set in this list it will be submitted in the headers.
     //  If omitted, rackspace will default to their mime settings or octet-stream
 	var mimeList = {
 		"323" : "text/h323",
