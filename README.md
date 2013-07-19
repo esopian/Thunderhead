@@ -71,10 +71,6 @@ Tests are run using [Mocha](http://visionmedia.github.io/mocha/) and [should](ht
     mocha
 
 
-## Todo
-
-* continue improving API coverage
-
 
 Copyright © 2013 [Cogsy](http://www.cogsy.com) licensed under the [MIT License](http://cogsy.mit-license.org/)
 
