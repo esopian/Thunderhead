@@ -37,7 +37,7 @@ module.exports = {
 		}, arguments)) { return callback({error:"Bad Arguments"}); }
 
 		return this.editContainerMeta({
-			container: container,
+			container: options.container,
 			meta: {
 				'X-Container-Meta-Access-Log-Delivery' : 'TRUE'
 			}
@@ -51,7 +51,7 @@ module.exports = {
 		}, arguments)) { return callback({error:"Bad Arguments"}); }
 
 		return this.editContainerMeta({
-			container: container,
+			container: options.container,
 			meta: {
 				'X-Container-Meta-Access-Log-Delivery' : 'FALSE'
 			}

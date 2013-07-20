@@ -10,13 +10,33 @@
         <div class="nav-collapse">
           <ul class="nav pull-right">
             <li style="margin-right:40px"><a href="#"><strong>Reset</strong></a></li>
-            
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Storage <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="nav-header">Examples</li>
-                <li><a href="#example/listContainers">listContainers</a></li>
-                <li><a href="#example/getContainerMeta">getContainerMeta</a></li>
+                <li><a href="#example/st_listContainers">    listContainers    </a></li>
+                <li><a href="#example/st_accountDetails">    accountDetails    </a></li>
+                <li><a href="#example/st_containerDetails">  containerDetails  </a></li>
+                <li><a href="#example/st_createContainer">   createContainer   </a></li>
+                <li><a href="#example/st_deleteContainer">   deleteContainer   </a></li>
+                <li><a href="#example/st_editContainerMeta"> editContainerMeta </a></li>
+                <li><a href="#example/st_getContainerMeta">  getContainerMeta  </a></li>
+                <li><a href="#example/st_listObjects">       listObjects       </a></li>
+                <li><a href="#example/st_getObject">         getObject         </a></li>
+                <li><a href="#example/st_putObject">         putObject         </a></li>
+                <li><a href="#example/st_copyObject">        copyObject        </a></li>
+                <li><a href="#example/st_deleteObject">      deleteObject      </a></li>
+                <li><a href="#example/st_getObjectMeta">     getObjectMeta     </a></li>
+                <li><a href="#example/st_editObjectMeta">    editObjectMeta    </a></li>
+
+                <li><a href="#example/st_setContainerCORS">      setContainerCORS      </a></li>
+                <li><a href="#example/st_enableAccessLog">       enableAccessLog       </a></li>
+                <li><a href="#example/st_disableAccessLog">      disableAccessLog      </a></li>
+                <li><a href="#example/st_putCompressedObject">   putCompressedObject   </a></li>
+                <li><a href="#example/st_copyObjectWithHeaders"> copyObjectWithHeaders </a></li>
+                <li><a href="#example/st_emptyContainer">        emptyContainer        </a></li>
+                <li><a href="#example/st_syncDir">               syncDir               </a></li>
               </ul>
             </li>
 
@@ -24,8 +44,22 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">DNS <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     <li class="nav-header">Examples</li>
-                    <li><a href="#example/listLimits">listLimits</a></li>
-                    <li><a href="#example/createDomain">createDomain</a></li>
+                    <li><a href="#example/dns_listLimits">        listLimits        </a></li>
+                    <li><a href="#example/dns_listLimitTypes">    listLimitTypes    </a></li>
+                    <li><a href="#example/dns_listDomains">       listDomains       </a></li>
+                    <li><a href="#example/dns_listSubdomains">    listSubdomains    </a></li>
+                    <li><a href="#example/dns_listDomainDetails"> listDomainDetails </a></li>
+                    <li><a href="#example/dns_listDomainChanges"> listDomainChanges </a></li>
+                    <li><a href="#example/dns_exportDomain">      exportDomain      </a></li>
+                    <li><a href="#example/dns_importDomain">      importDomain      </a></li>
+                    <li><a href="#example/dns_createDomain">      createDomain      </a></li>
+                    <li><a href="#example/dns_deleteDomain">      deleteDomain      </a></li>
+                    <li><a href="#example/dns_editDomain">        editDomain        </a></li>
+                    <li><a href="#example/dns_listRecords">       listRecords       </a></li>
+                    <li><a href="#example/dns_listRecordDetails"> listRecordDetails </a></li>
+                    <li><a href="#example/dns_createRecord">      createRecord      </a></li>
+                    <li><a href="#example/dns_editRecord">        editRecord        </a></li>
+                    <li><a href="#example/dns_deleteRecord">      deleteRecord      </a></li>
                 </ul>
             </li>
 
@@ -33,7 +67,15 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">CDN <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     <li class="nav-header">Examples</li>
-                    <li><a href="#example/listCDNContainers">listContainers</a></li>
+                    <li><a href="#example/cdn_listContainers">    listContainers    </a></li>
+                    <li><a href="#example/cdn_getContainerMeta">  getContainerMeta  </a></li>
+                    <li><a href="#example/cdn_editContainerMeta"> editContainerMeta </a></li>
+                    <li><a href="#example/cdn_enableContainer">   enableContainer   </a></li>
+                    <li><a href="#example/cdn_disableContainer">  disableContainer  </a></li>
+                    <li><a href="#example/cdn_purgeObject">       purgeObject       </a></li>
+
+                    <li><a href="#example/cdn_enableLog">  enableLog  </a></li>
+                    <li><a href="#example/cdn_disableLog"> disableLog </a></li>
                 </ul>
             </li>
 
@@ -41,7 +83,19 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">LoadBalancers <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     <li class="nav-header">Examples</li>
-                    <li><a href="#example/createLB">createLB</a></li>
+                    <li><a href="#example/lb_listLimits">            listLimits            </a></li>
+                    <li><a href="#example/lb_listAllowedDomains">    listAllowedDomains    </a></li>
+                    <li><a href="#example/lb_listAbsoluteLimits">    listAbsoluteLimits    </a></li>
+                    <li><a href="#example/lb_listLB">                listLB                </a></li>
+                    <li><a href="#example/lb_getSSLDetails">         getSSLDetails         </a></li>
+                    <li><a href="#example/lb_listLBDetails">         listLBDetails         </a></li>
+                    <li><a href="#example/lb_createLB">              createLB              </a></li>
+                    <li><a href="#example/lb_editLB">                editLB                </a></li>
+                    <li><a href="#example/lb_deleteLB">              deleteLB              </a></li>
+                    <li><a href="#example/lb_addNode">               addNode               </a></li>
+                    <li><a href="#example/lb_getHealthMonitorLB">    getHealthMonitorLB    </a></li>
+                    <li><a href="#example/lb_editHealthMonitorLB">   editHealthMonitorLB   </a></li>
+                    <li><a href="#example/lb_deleteHealthMonitorLB"> deleteHealthMonitorLB </a></li>
                 </ul>
             </li>
 

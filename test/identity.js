@@ -3,10 +3,12 @@ var config      = require('./apiConfig');
 var thunderhead = require('../thunderhead');
 var should      = require('should');
 
-describe('Core', function(){
+describe('Identity', function(){
+    var client;
+
     before(function(){
         //strap up the client object before testing
-        this.client = new thunderhead({
+        client = new thunderhead({
             username    : config.username,
             apikey      : config.apiKey,
             internalNet : config.internalNet,
@@ -16,23 +18,27 @@ describe('Core', function(){
 
     describe('Thunderhead construct', function(){
         it('client should exist', function(done){
-            this.client.should.exist;
+            client.should.exist;
             done();
         });
     });
 
-    describe('request should succeed with callback', function(){
-        it('client should exist', function(done){
+    describe('identity exists', function(){
+        it('identity should exist', function(done){
+            client.identity.should.exist;
             done();
         });
     });
 
-    describe('request should succeed with streaming', function(){
-        it('client should exist', function(done){
-            done();
+    describe('authenticated should succeed', function(){
+        it('should pass authenticate', function(done){
+            client.identity.authenticate(null, function(err, reply) {
+                should.not.exist(err);
+                reply.should.exist;
+                reply.should.be.an.instanceOf(Object);
+                done();
+            });
         });
     });
-
-    //TODO: test process arguments
 
 });

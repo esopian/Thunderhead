@@ -180,7 +180,7 @@ dns.prototype.editDomain = function(options, callback)  {
 
 	return this.requestAsync({
 		method : "PUT",
-		url : "domains/"+options.domainId,
+		url : "domains/"+domainId,
 		data : options
 	}, callback);
 };

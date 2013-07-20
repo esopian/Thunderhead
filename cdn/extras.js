@@ -3,7 +3,7 @@
  * @type {Object} Definition of prototype methods
  */
 module.exports = {
-	
+
 	enableLog : function(options, callback) {
 		if(!this.core.processArgs({
 			required : ['container'],
@@ -11,7 +11,7 @@ module.exports = {
 		}, arguments)) { return callback({error:"Bad Arguments"}); }
 
 		return this.editContainerMeta({
-			container: container, 
+			container: options.container,
 			meta: {
 				'X-Log-Retention' : 'True'
 			}
@@ -25,7 +25,7 @@ module.exports = {
 		}, arguments)) { return callback({error:"Bad Arguments"}); }
 
 		return this.editContainerMeta({
-			container: container, 
+			container: options.container,
 			meta: {
 				'X-Log-Retention' : 'False'
 			}
