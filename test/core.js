@@ -1,7 +1,7 @@
 // Test cases for core library behavior
+var should      = require('should');
 var config      = require('./apiConfig');
 var thunderhead = require('../thunderhead');
-var should      = require('should');
 
 describe('Core', function(){
     before(function(){
@@ -31,8 +31,22 @@ describe('Core', function(){
         it('client should exist', function(done){
             done();
         });
+
+        // it('should test request', function(done) {
+        //     var request = require('request');
+        //     var first = false;
+        //     request({
+        //         url : 'http://www.google.com',
+        //         method : 'GET'
+        //     }, function(){
+        //         first = first || "CALLBACK";
+        //         console.log(first);
+        //     }).on('end', function(){
+        //         first = first || "PIPE";
+        //         console.log(first);
+        //     });
+        // });
     });
 
-    //TODO: test process arguments
 
 });

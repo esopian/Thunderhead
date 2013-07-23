@@ -9,8 +9,8 @@ function PlaybackStream(options) {
     self.options = options;
 
     self.rid = 0;
-    if(options.debug) { 
-        self.debug = true; 
+    if(options.debug) {
+        self.debug = true;
         //Not a tru UUID but good enough for practical debugging
         self.rid = Math.floor((Math.random()*1000000000)+1);
     }
@@ -20,7 +20,7 @@ function PlaybackStream(options) {
 
     //Recorded tape
     self.tape = [];
-    self.recording = true;
+    self.recording = false;
 
     self.readable = true;
     self.writable = true;
@@ -37,57 +37,36 @@ function PlaybackStream(options) {
 
     self.on('pipe', function(inPipe){
         self.log('CAUGHT PIPE!');
+        self.recording = true;
         self.piped = true;
         if(!_.contains(self.listeningPipes, inPipe)) {
             self.log('Hooked Pipes!');
             self.listeningPipes.push(inPipe);
             ['write','data','error','drain','close','end'].forEach(function(name){
                 inPipe.on(name, function(data){
-                    self.tape.push({
-                        name:name,
-                        data:data
-                    });
+                    self.log(name+" event caught");
+                    if(self.recording) {
+                        self.tape.push({ name:name, data:data });
+                    } else {
+                        self.emit(name, data);
+                    }
                     // if(!self.recording) { self.playback(); }
                 });
             });
-
-            // [].forEach(function(name){
-            //     inPipe.on(name, function(data){
-            //         self.log('UnHooked Pipes!');
-            //         self.tape.push({
-            //             name:name,
-            //             data:data
-            //         });
-            //         var listener = _.indexOf(self.listeningPipes, inPipe);
-            //         if (listener) { self.listeningPipes.splice(listener,1); }
-            //         // if(!self.recording) { self.playback(); }
-            //     });
-            // });
         }
     });
 
     //Munch - Nom Nom Nom
-    ['write','end','destory'].forEach(function(name){
+    ['write','end','destroy'].forEach(function(name){
         self[name] = function() {};
     });
-    // 
-    // ['write','data','error','drain','close','end'].forEach(function(name){
-    //     self[name] = function(data) {
-    //         self.tape.push({
-    //             name:name,
-    //             data:arguments
-    //         });
-    //     };
-    // });
-
 }
 
 util.inherits(PlaybackStream, stream.Stream);
 
 PlaybackStream.prototype.eraseTape = function(force) {
-    if(!this.playing || force) { 
+    if(!this.playing || force) {
         this.log("Erasing Tape.");
-        // this.tape = []; 
         // Clear Array but keep references
         this.tape.length = 0;
     } else {
@@ -102,17 +81,34 @@ PlaybackStream.prototype.logTape = function() {
 };
 
 PlaybackStream.prototype.pipe = function(dest) {
-    //Remove Listener from a previous destination
-
     this.dest = dest;
     return stream.Stream.prototype.pipe.call(this,this.dest);
+};
+
+PlaybackStream.prototype.playbackOnEnd = function(dest, options) {
+    var self = this;
+    var waiting = true;
+    if(_.find(self.tape, function(evt){ return evt.name == 'end'; })) {
+        waiting = false;
+        self.playback(dest,options);
+    } else {
+        this.on('end', function() {
+            if(waiting) {
+                waiting = false;
+                //nextTick
+                setTimeout(function(){
+                    self.playback(dest,options);
+                },0);
+            }
+        });
+    }
 };
 
 //Playback the history of the tape
 PlaybackStream.prototype.playback = function(dest, options) {
     var self = this;
     options = options || {};
-    
+
     if(dest) self.pipe(dest);
 
     self.log("PLAYBACK : "+self.rid);
@@ -120,7 +116,7 @@ PlaybackStream.prototype.playback = function(dest, options) {
     self.log("Recorded "+this.tape.length+" messages");
     var sentCount = 0;
     self.logTape();
-    
+
 
     // if(!this.dest) { return false; }
 
@@ -128,14 +124,14 @@ PlaybackStream.prototype.playback = function(dest, options) {
     this.playing = true;
     //self.logTape();
     (function tapeTick() {
-        if(self.tape.length <= 0) { 
+        if(self.tape.length <= 0) {
             self.log("Played "+sentCount+" messages");
             //Check if destination is another PlaybackStream
             if(options.cascade && self.dest && self.dest.playback) self.dest.playback();
             self.playing = false;
             self.recording = true;
             return true;
-        } 
+        }
 
         var e = self.tape.shift();
 
