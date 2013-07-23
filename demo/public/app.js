@@ -8,16 +8,16 @@ require(['libs/text!header.html', 'libs/text!home.html', 'libs/text!footer.html'
         initialize: function() {
             this.headerView = new HeaderView();
             this.headerView.render();
-            this.footerView = new FooterView();
-            this.footerView.render();
         },
         home: function() {
             this.homeView = new HomeView();
             this.homeView.render();
+            $(document).foundation();
         },
         loadExample : function(name) {
             if(!this.homeView) { this.home(); }
             this.homeView.loadExample(examples[name]);
+            $(document).foundation();
         }
     });
 
@@ -31,14 +31,6 @@ require(['libs/text!header.html', 'libs/text!home.html', 'libs/text!footer.html'
 
         render: function() {
             $(this.el).html(_.template(this.template));
-        }
-    });
-
-    FooterView = Backbone.View.extend({
-        el: "#footer",
-        template: footerTpl,
-        render: function() {
-            this.$el.html(_.template(this.template));
         }
     });
 
@@ -59,8 +51,14 @@ require(['libs/text!header.html', 'libs/text!home.html', 'libs/text!footer.html'
 
         sendRequest: function(e) {
             var self = this;
-
-            self.$('.result').html("");
+            var c = 0;
+            var interval = window.setInterval(function() {
+                if(c == 4) c = 0;
+                c++;
+                var str = "";
+                for(var i = 0; i < c; i++) { str += "."; }
+                self.$('.result').html('Waiting for response' + str);
+            }, 350);
 
             var service = this.$('.service_select').val();
             var command = this.$('.command_input').val();
@@ -73,9 +71,11 @@ require(['libs/text!header.html', 'libs/text!home.html', 'libs/text!footer.html'
                 dataType: 'json',
                 success: function(data, textStatus, jqXHR) {
                     self.$('.result').html(JSON.stringify(data, undefined, 2));
+                    window.clearInterval(interval);
                 },
                 error : function(data) {
                     self.$('.result').html("!!!ERROR!!!\n\n"+data.responseText);
+                    window.clearInterval(interval);
                 }
             });
         },

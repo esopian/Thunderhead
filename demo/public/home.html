@@ -1,53 +1,67 @@
-<style type="text/css">
-	.result_span {
-	    outline-offset: 6px;
-	    outline-style: dashed;
-	}
-	.send {
-		margin: 6px 0px;
-		width: 20%;
-	}
-</style>
-<div class="row-fluid">
-	<div class="span5">
-		<h3>Request</h3>
+<!-- Form -->
+<div class="large-5 columns">
+    <form class="custom">
+        <div class="row">
+            <div class="large-12 columns panel">
+                <label><strong class="round label">1</strong> Select a service</label>
+                <select id="customDropdown1" class="service_select">
+                    <option>storage</option>
+                    <option>cdn</option>
+                    <option>dns</option>
+                    <option>compute</option>
+                    <option>lb</option>
+                    <option>identity</option>
+                </select>
+            </div>
+        </div>
 
-	  	<label>Service</label>
-	  	<select class="service_select">
-		  <option>storage</option>
-		  <option>cdn</option>
-		  <option>dns</option>
-		  <option>compute</option>
-		  <option>lb</option>
-		  <option>identity</option>
-		</select>
+        <div class="row">
+            <div class="large-12 columns panel">
+                <label><strong class="round label">2</strong> Build your request object</label>
+                <div id="jsoneditor" class="request_input" style="width: 100%"></div>
+            </div>
+        </div>
 
-	    <label>Command</label>
-	    <input type="text" style="width:80%" class="command_input" placeholder="Type something…">
-	    <span class="help-block">Enter the command you would like to run.</span>
+        <div class="row">
+            <div class="large-12 columns panel">
+                <label><strong class="round label">3</strong> Send the command</label>
+                <div class="row collapse">
+                    <div class="large-10 columns">
+                        <input type="text" class="command_input" placeholder="Enter your command...">
+                    </div>
+                    <div class="large-2 columns">
+                        <button type="button" class="button prefix send">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	    <label>Request Object</label>
-	    <!-- <textarea rows="20" style="width:100%" placeholder="{ }"></textarea> -->
-	    <div id="jsoneditor" class="request_input" style="width: 100%"></div>
 
-	   <button class="btn send">Send</button>
+        <div class="row">
+            <div class="large-12 columns">
+                <a href="#" data-reveal-id="code_example" class="radius button">View Code Example</a>
+            </div>
+        </div>
 
-       <div class="code_example" style="margin-top:28px;display:none;">
-        <h3>Example Code</h3>
+    </form>
+</div>
+
+<!-- Response -->
+<div class="large-7 columns result_span">
+    <pre class="result prettyprint">Your response will appear here...</pre>
+</div>
+
+<!-- Code Example -->
+<div id="code_example" class="reveal-modal">
+    <h2>CODE EXAMPLE</h2>
+    <div class="code_example">
         <pre></pre>
-       </div>
-
-	</div>
-
-
-	<div class="span7 result_span">
-		<h3>Result</h3>
-		<pre class="result prettyprint linenums">API Result will go here...</pre>
-	</div>
+    </div>
+    <a class="close-reveal-modal">×</a>
 </div>
 
 
-<script type="text/javascript" >
+<script type="text/javascript">
     // create the editor. Optionally, parameters json and options can be
     // specified in the constructor.
     var container = document.getElementById("jsoneditor");
