@@ -9,6 +9,10 @@ describe('DNS', function(){
     var domainId;
     var recordId;
 
+    // Must create a random domain name.  Domains are enforced unique across all Rackspace.
+    // This will reduce collision errors when testing api calls
+    var domainName = config.username+'-'+Math.floor(Math.random()*99999)+'.com';
+
     var waitForActive = function(done) {
         var attempts = 0;
         var wait     = 2000;
@@ -93,20 +97,20 @@ describe('DNS', function(){
     describe('createDomain', function(){
         it('command should execute without error', function(done){
             client.dns.createDomain({
-                name         : 'thunderheadunittest.com',
-                emailAddress : 'domains@thunderheadunittest.com',
+                name         : domainName,
+                emailAddress : 'domains@'+domainName,
                 ttl          : 900,
                 recordsList  : {
                     records : [
                         {
                             ttl  : 900,
-                            name : 'thunderheadunittest.com',
+                            name : domainName,
                             type : 'A',
                             data : '74.125.227.134'
                         },
                         {
                             ttl  : 900,
-                            name : 'www.thunderheadunittest.com',
+                            name : 'www.'+domainName,
                             type : 'A',
                             data : '131.253.33.200'
                         }
@@ -160,7 +164,7 @@ describe('DNS', function(){
                 domainId : domainId,
                 ttl      : 900,
                 type     : 'A',
-                name     : 'test.thunderheadunittest.com',
+                name     : 'test.'+domainName,
                 data     : '131.253.33.200'
             }, function(err, reply) {
                 should.not.exist(err);
@@ -184,7 +188,7 @@ describe('DNS', function(){
                 recordId : recordId,
                 ttl      : 1800,
                 type     : 'A',
-                name     : 'test.thunderheadunittest.com',
+                name     : 'test.'+domainName,
                 data     : '131.253.33.200'
             }, function(err, reply) {
                 should.not.exist(err);
