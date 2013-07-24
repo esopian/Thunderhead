@@ -106,7 +106,7 @@ core.prototype.request = function(options, callback, service) {
             requestObj.headers = options.headers;
         }
 
-        // console.log(requestObj);
+
         request(requestObj, function(err, response, body) {
             if(err) {
                 return play_callback(err);
@@ -171,12 +171,12 @@ core.prototype.requestAsync = function(options, callback, service) {
 
     var decayTime = this.asyncDecay;
     (function statusLoop(wait, details){
-        // console.log("Looping Async");
+
         setTimeout(function(){
             returnStream.eraseTape();
-            console.log(options);
+
             service.request(options, function(err, reply) {
-                console.log(reply);
+
                 if(err) {
                     // if(rToken.piped)
                     return play_callback(err);
@@ -187,7 +187,6 @@ core.prototype.requestAsync = function(options, callback, service) {
                         return play_callback(err,reply);
                     }
                     else {
-                        // console.log(reply);
                         if(reply.status == "COMPLETED") {
                             //TODO:  Prevent Loop calls.
                             if(reply.response || details) {

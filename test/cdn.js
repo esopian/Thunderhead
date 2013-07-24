@@ -116,7 +116,6 @@ describe('CDN', function(){
                 should.not.exist(err);
                 reply.should.exist;
                 reply.should.be.an.instanceOf(Object);
-                console.log(reply);
                 reply['x-ttl'].should.equal('900');
                 done();
             });

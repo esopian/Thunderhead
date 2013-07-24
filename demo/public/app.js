@@ -99,7 +99,6 @@ require(['libs/text!header.html', 'libs/text!home.html', 'libs/text!footer.html'
                         //Fix for <>
                         data = data.replace(/\</g, '&lt;');
                         data = data.replace(/\</g, '&gt;');
-                        // console.log(data);
 
                         self.$('.code_example pre').html('<code data-language="javascript">'+data+'</code>');
                         Rainbow.color();
