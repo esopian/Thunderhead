@@ -62,7 +62,7 @@ The demo server will now be running at <http://localhost:8080>
 
 ## Testing
 
-Tests are run using [Mocha](http://visionmedia.github.io/mocha/) and [should](https://github.com/visionmedia/should.js/).
+Tests are run using [Mocha](http://mochajs.org/) and [should](https://github.com/visionmedia/should.js/).
 
     npm install -g mocha
     nom install -g should
